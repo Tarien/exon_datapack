@@ -18,6 +18,7 @@
 	<movevent event="StepIn" uniqueid="60601" script="custom/aureliuscarpet.lua"/>
 	<movevent event="StepIn" fromuid="60604" touid="60605" script="custom/aurelius_teleport.lua"/>
 	<movevent event="StepIn" fromuid="60650" touid="60651" script="custom/vanguard_ocean_portal.lua"/>
+	<movevent event="StepIn" uniqueid="62300" script="teleport/citizen.lua"/>
 	
 	<!-- create party cake -->
 	<movevent event="AddItem" tileitem="1" itemid="6279" script="others/cake.lua"/>

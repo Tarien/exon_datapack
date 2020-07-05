@@ -1127,8 +1127,8 @@
 	<house name="Sanctuary 15" houseid="2684" entryx="33660" entryy="33095" entryz="7" rent="3000" townid="67" size="10" />
 	<house name="Sanctuary 16" houseid="2685" entryx="33661" entryy="33096" entryz="7" rent="3000" townid="67" size="28" />
 	<house name="Sanctuary 17" houseid="2686" entryx="33660" entryy="33095" entryz="6" rent="3000" townid="67" size="39" />
-	<house name="Sanctuary 19" houseid="2688" entryx="33658" entryy="33093" entryz="5" rent="3000" townid="67" size="35" />
-	<house name="Sanctuary 20" houseid="2689" entryx="33661" entryy="33093" entryz="5" rent="3000" townid="67" size="27" />
+	<house name="Sanctuary 19" houseid="2688" entryx="33658" entryy="33093" entryz="5" rent="3000" townid="67" size="34" />
+	<house name="Sanctuary 20" houseid="2689" entryx="33661" entryy="33093" entryz="5" rent="3000" townid="67" size="26" />
 	<house name="Frontline 15" houseid="2690" entryx="33382" entryy="32896" entryz="5" rent="3000" townid="66" size="23" />
 	<house name="Portals 15" houseid="2691" entryx="33378" entryy="32927" entryz="9" rent="3000" townid="66" size="30" />
 </houses>
