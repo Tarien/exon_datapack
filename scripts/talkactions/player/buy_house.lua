@@ -31,11 +31,6 @@ function buyHouse.onSay(player, words, param)
 		return false
 	end
 
-	if checkAccHouses(player) then
-		player:sendCancelMessage("You already own a house with this account.")
-		return false
-	end
-	
 	local price = house:getTileCount() * housePrice
 	if not player:removeMoneyNpc(price) then
 		player:sendCancelMessage("You do not have enough money.")
@@ -43,7 +38,7 @@ function buyHouse.onSay(player, words, param)
 	end
 
 	house:setOwnerGuid(player:getGuid())
-	player:sendTextMessage(MESSAGE_INFO_DESCR, "You have successfully bought this house, be sure to have the money for the rent in the bank.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have successfully bought this house, be sure to have the money for the rent in the bank.")
 	return false
 end
 

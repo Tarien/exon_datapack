@@ -58,7 +58,7 @@ if Modules == nil then
 		end
 
 		local player = Player(cid)
-		local cost, costMessage = parameters.cost, '%d gold coins'
+		local cost, costMessage = parameters.cost, '%d gold'
 		if cost and cost > 0 then
 			if parameters.discount then
 				cost = cost - StdModule.travelDiscount(player, parameters.discount)
@@ -212,8 +212,6 @@ if Modules == nil then
 			cost = 0
 		end
 
-		local exhausts = 159321
-
 		if parameters.premium and not player:isPremium() then
 			npcHandler:say("I'm sorry, but you need a premium account in order to travel onboard our ships.", cid)
 		elseif parameters.level and player:getLevel() < parameters.level then
@@ -222,7 +220,7 @@ if Modules == nil then
 			npcHandler:say("First get rid of those blood stains! You are not going to ruin my vehicle!", cid)
 		elseif not player:removeMoneyNpc(cost) then
 			npcHandler:say("You don't have enough money.", cid)
-		elseif os.time() < getPlayerStorageValue(cid, exhausts) then
+		elseif os.time() < getPlayerStorageValue(cid, Storage.NpcExhaust) then
 			npcHandler:say('Sorry, but you need to wait three seconds before travel again.', cid)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		else
@@ -236,16 +234,16 @@ if Modules == nil then
 			end
 
 			player:teleportTo(destination)
-			destination:sendMagicEffect(CONST_ME_TELEPORT)
+			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 
-			setPlayerStorageValue(cid, exhausts, 3 + os.time())
+			setPlayerStorageValue(cid, StorageNpcExhaust, 3 + os.time())
 			player:teleportTo(destination)
-			destination:sendMagicEffect(CONST_ME_TELEPORT)
+			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 
 			-- What a foolish Quest - Mission 3
-			if player:getStorageValue(Storage.WhatAFoolishQuest.PieBoxTimer) > os.time() then
+			if player:getStorageValue(Storage.WhatAFoolish.PieBoxTimer) > os.time() then
 				if destination ~= Position(32660, 31957, 15) then -- kazordoon steamboat
-					player:setStorageValue(Storage.WhatAFoolishQuest.PieBoxTimer, 1)
+					player:setStorageValue(Storage.WhatAFoolish.PieBoxTimer, 1)
 				end
 			end
 		end
@@ -401,10 +399,12 @@ if Modules == nil then
 				if reply then
 					self:addKeyword(keywords, reply)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter '" .. "keyword_reply" .. n .. "' missing. Skipping...")
+					Spdlog.warn(string.format("[KeywordModule:parseKeywords] - %s] NpcSystem: Parameter keyword_reply [%d] missing. Skipping...",
+						Npc():getName(), n))
 				end
 			else
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "No keywords found for keyword set #" .. n .. ". Skipping...")
+				Spdlog.warn(string.format("[KeywordModule:parseKeywords] - %s] NpcSystem: No keywords found for keyword set [%d]. Skipping...",
+					Npc():getName(), n))
 			end
 
 			n = n + 1
@@ -478,7 +478,8 @@ if Modules == nil then
 				elseif i == 6 then
 					premium = temp == "true"
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in travel destination parameter.", temp, destination)
+					Spdlog.warn(string.format("[TravelModule:parseDestinations] - %s] NpcSystem: Unknown parameter found in travel destination parameter. temp[%d], destination[%s]",
+						Npc():getName(), temp, destination))
 				end
 				i = i + 1
 			end
@@ -486,7 +487,7 @@ if Modules == nil then
 			if name and x and y and z and cost then
 				self:addDestination(name, {x=x, y=y, z=z}, cost, premium)
 			else
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for travel destination:", name, x, y, z, cost, premium)
+				Spdlog.warn("[TravelModule:parseDestinations] - " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for travel destination:", name, x, y, z, cost, premium)
 			end
 		end
 	end
@@ -700,7 +701,7 @@ if Modules == nil then
 				elseif i == 5 then
 					realName = temp
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in buyable items parameter.", temp, item)
+					Spdlog.warn("[ShopModule:parseBuyable] - " .. Npc():getName() .. "] NpcSystem: Unknown parameter found in buyable items parameter.", temp, item)
 				end
 				i = i + 1
 			end
@@ -713,18 +714,18 @@ if Modules == nil then
 			if SHOPMODULE_MODE == SHOPMODULE_MODE_TRADE then
 				if itemid and cost then
 					if subType == nil and it:isFluidContainer() then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
+						Spdlog.warn("[ShopModule:parseBuyable] - " .. Npc():getName() .. "] NpcSystem: SubType missing for parameter item:", item)
 					else
 						self:addBuyableItem(nil, itemid, cost, subType, realName)
 					end
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", itemid, cost)
+					Spdlog.warn("[ShopModule:parseBuyable] - " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", itemid, cost)
 				end
 			else
 				if name and itemid and cost then
 					local VIAL = 2006
 					if subType == nil and it:isFluidContainer() then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
+						Spdlog.warn("[ShopModule:parseBuyable] - " .. Npc():getName() .. "] NpcSystem: SubType missing for parameter item:", item)
 					elseif itemid == VIAL then
 						local vials = {"vial of water","vial of blood", nil, "vial of slime", nil, nil, nil, nil, nil, nil, "vial of oil", nil, "vial of urine", nil, "vial of oil"}
 						self:addBuyableItem(nil, itemid, cost, subType, vials[subType])
@@ -734,7 +735,7 @@ if Modules == nil then
 						self:addBuyableItem(names, itemid, cost, subType, realName)
 					end
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, itemid, cost)
+					Spdlog.warn("[ShopModule:parseBuyable] - " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", name, itemid, cost)
 				end
 			end
 		end
@@ -763,7 +764,7 @@ if Modules == nil then
 				elseif i == 5 then
 					subType = tonumber(temp)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in sellable items parameter.", temp, item)
+					Spdlog.warn("[ShopModule:parseSellable] - " .. Npc():getName() .. "] NpcSystem: Unknown parameter found in sellable items parameter.", temp, item)
 				end
 				i = i + 1
 			end
@@ -772,7 +773,7 @@ if Modules == nil then
 				if itemid and cost then
 					self:addSellableItem(nil, itemid, cost, realName, subType)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", itemid, cost)
+					Spdlog.warn("[ShopModule:parseSellable] - " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", itemid, cost)
 				end
 			else
 				if name and itemid and cost then
@@ -780,7 +781,7 @@ if Modules == nil then
 					names[#names + 1] = name
 					self:addSellableItem(names, itemid, cost, realName, subType)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, itemid, cost)
+					Spdlog.warn("[ShopModule:parseSellable] - " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", name, itemid, cost)
 				end
 			end
 		end
@@ -812,21 +813,21 @@ if Modules == nil then
 				elseif i == 6 then
 					realName = temp
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in buyable items parameter.", temp, item)
+					Spdlog.warn("[ShopModule:parseBuyableContainers] - " .. Npc():getName() .. "] NpcSystem: Unknown parameter found in buyable items parameter.", temp, item)
 				end
 				i = i + 1
 			end
 
 			if name and container and itemid and cost then
 				if subType == nil and ItemType(itemid):isFluidContainer() then
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
+					Spdlog.warn("[ShopModule:parseBuyableContainers] - " .. Npc():getName() .. "] NpcSystem: SubType missing for parameter item:", item)
 				else
 					local names = {}
 					names[#names + 1] = name
 					self:addBuyableItemContainer(names, container, itemid, cost, subType, realName)
 				end
 			else
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, container, itemid, cost)
+				Spdlog.warn("[ShopModule:parseBuyableContainers] - " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", name, container, itemid, cost)
 			end
 		end
 	end
@@ -1088,7 +1089,7 @@ if Modules == nil then
 			if not player:removeMoneyNpc(totalCost) then
 				return false
 			end
-			player:sendTextMessage(MESSAGE_INFO_DESCR, msg)
+			player:sendTextMessage(MESSAGE_TRADE, msg)
 			self.npcHandler.talkStart[cid] = os.time()
 			return true
 		end
@@ -1117,12 +1118,14 @@ if Modules == nil then
 
 		if not isItemFluidContainer(itemid) then
 			subType = -1
+		elseif subType == 0 then
+			subType = -1
 		end
 
 		if player:removeItem(itemid, amount, subType, ignoreEquipped) then
 			local msg = self.npcHandler:getMessage(MESSAGE_SOLD)
 			msg = self.npcHandler:parseMessage(msg, parseInfo)
-			player:sendTextMessage(MESSAGE_INFO_DESCR, msg)
+			player:sendTextMessage(MESSAGE_TRADE, msg)
 			player:addMoney(amount * shopItem.sell)
 			self.npcHandler.talkStart[cid] = os.time()
 			return true

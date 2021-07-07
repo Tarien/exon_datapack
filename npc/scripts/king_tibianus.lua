@@ -19,7 +19,24 @@ local function creatureSayCallback(cid, type, msg)
 	if not npcHandler:isFocused(cid) then 
 		return false 
 	end
+
 	local player = Player(cid)
+	
+	if msgcontains(msg, "farmine") then
+		if player:getStorageValue(Storage.TheNewFrontier.Questline) == 15 then
+			npcHandler:say("King Tibianus: Ah, I vaguely remember that our little allies were eager to build some base. So speak up, what do you want?", cid)
+			npcHandler.topic[cid] = 1
+		end
+	elseif msgcontains(msg, "Flatter") then
+		if npcHandler.topic[cid] == 1 then
+			if player:getStorageValue(Storage.TheNewFrontier.BribeKing) < 1 then
+				npcHandler:say("The idea of a promising market and new resources suits us quite well. I think it is reasonable to send some assistance.", cid)
+				player:setStorageValue(Storage.TheNewFrontier.BribeKing, 1)
+				player:setStorageValue(Storage.TheNewFrontier.Mission05, player:getStorageValue(Storage.TheNewFrontier.Mission05) + 1) --Questlog, The New Frontier Quest "Mission 05: Getting Things Busy"
+			end
+		end
+	end
+	
 	if(msgcontains(msg, "outfit")) or (msgcontains(msg, "addon")) then
 		selfSay("In exchange for a truly generous donation, I will offer a special outfit. Do you want to make a donation?", cid)
 		npcHandler.topic[cid] = 1
@@ -44,8 +61,8 @@ local function creatureSayCallback(cid, type, msg)
 					if inbox and inbox:getEmptySlots() > 0 then
 						local decoKit = inbox:addItem(26054, 1)
 						local decoItemName = ItemType(36345):getName()
-							decoKit:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, "You bought this item in the Store.\nUnwrap it in your own house to create a " .. decoItemName .. ".")
-							decoKit:setActionId(36345)
+							decoKit:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, "Unwrap it in your own house to create a " .. decoItemName .. ".")
+							decoKit:setCustomAttribute("unWrapId", 36345)
 							selfSay("Take this armor as a token of great gratitude. Let us forever remember this day, my friend!", cid)
 							player:removeMoneyNpc(500000000)
 							player:addOutfit(1211)
@@ -70,8 +87,8 @@ local function creatureSayCallback(cid, type, msg)
 					if player:getMoney() + player:getBankBalance() >= 250000000 then
 						selfSay("Take this helmet as a token of great gratitude. Let us forever remember this day, my friend. ", cid)
 						player:removeMoneyNpc(250000000)
-						player:addOutfitAddon(1210, 1)
-						player:addOutfitAddon(1211, 1)
+						player:addOutfitAddon(1210, 2)
+						player:addOutfitAddon(1211, 2)
 						player:getPosition():sendMagicEffect(171)
 						player:setStorageValue(Storage.OutfitQuest.GoldenOutfit, 2)
 						npcHandler.topic[cid] = 2
@@ -96,8 +113,8 @@ local function creatureSayCallback(cid, type, msg)
 					if player:getMoney() + player:getBankBalance() >= 250000000 then
 						selfSay("Take this boots as a token of great gratitude. Let us forever remember this day, my friend. ", cid)
 						player:removeMoneyNpc(250000000)
-						player:addOutfitAddon(1210, 2)
-						player:addOutfitAddon(1211, 2)
+						player:addOutfitAddon(1210, 1)
+						player:addOutfitAddon(1211, 1)
 						player:getPosition():sendMagicEffect(171)
 						player:setStorageValue(Storage.OutfitQuest.GoldenOutfit, 3)
 						npcHandler.topic[cid] = 2

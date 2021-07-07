@@ -1,18 +1,18 @@
 -- Be careful, do not add quest door inside the level door table, this will lock the doors.
 
 -- ID of the keys.
-keysID = {2086, 2087, 2088, 2089, 2090, 2091, 2092}
+keysID = {2086, 2087, 2088, 2089, 2090, 2091, 2092, 23763}
 
 -- The lockedDoor is the doors with the description "It is locked". Use this (with no action) to keep a door permanently isoled.
 -- The closedDoor is the doors that are unlocked, when using them open normally.
-keyDoor = {
+KeyDoorTable = {
 	{ lockedDoor = 1209, closedDoor = 1210, openDoor = 1211 },
 	{ lockedDoor = 1212, closedDoor = 1213, openDoor = 1214 },
 	{ lockedDoor = 1231, closedDoor = 1232, openDoor = 1233 },
 	{ lockedDoor = 1234, closedDoor = 1235, openDoor = 1236 },
 	{ lockedDoor = 1249, closedDoor = 1250, openDoor = 1251 },
 	{ lockedDoor = 1252, closedDoor = 1253, openDoor = 1254 },
-	{ lockedDoor = 3535, closedDoor = 3336, openDoor = 3537 },
+	{ lockedDoor = 3535, closedDoor = 3536, openDoor = 3537 },
 	{ lockedDoor = 3544, closedDoor = 3545, openDoor = 3546 },
 	{ lockedDoor = 4916, closedDoor = 4917, openDoor = 4918 },
 	{ lockedDoor = 4913, closedDoor = 4914, openDoor = 4915 },
@@ -61,18 +61,18 @@ keyDoor = {
 	{ lockedDoor = 19989, closedDoor = 19990, openDoor = 19991 },
 	{ lockedDoor = 20273, closedDoor = 20274, openDoor = 20275 },
 	{ lockedDoor = 20282, closedDoor = 20283, openDoor = 20284 },
-	{ lockedDoor = 22814, closedDoor = 22815, openDoor = 22816 },
-	{ lockedDoor = 22823, closedDoor = 22824, openDoor = 22825 },
+	{ lockedDoor = 22815, closedDoor = 22814, openDoor = 22816 },
+	{ lockedDoor = 22824, closedDoor = 22823, openDoor = 22825 },
 	{ lockedDoor = 26541, closedDoor = 26542, openDoor = 26545 },
 	{ lockedDoor = 26543, closedDoor = 26544, openDoor = 26546 },
 	{ lockedDoor = 33117, closedDoor = 33118, openDoor = 32582 },
 	{ lockedDoor = 33119, closedDoor = 33120, openDoor = 32583 },
 	{ lockedDoor = 35607, closedDoor = 35608, openDoor = 35611 },
-	{ lockedDoor = 35609, closedDoor = 35610, openDoor = 35612 },
+	{ lockedDoor = 35609, closedDoor = 35610, openDoor = 35612 }
 }
 
 -- These are the common doors, the ones that just open and close without any special requirements.
-customDoor = {
+CustomDoorTable = {
 	{ closedDoor = 1219, openDoor = 1220 },
 	{ closedDoor = 1221, openDoor = 1222 },
 	{ closedDoor = 1237, openDoor = 1238 },
@@ -95,6 +95,8 @@ customDoor = {
 	{ closedDoor = 6200, openDoor = 6201 },
 	{ closedDoor = 6255, openDoor = 6256 },
 	{ closedDoor = 6257, openDoor = 6258 },
+	{ closedDoor = 6894, openDoor = 6895 },
+	{ closedDoor = 6903, openDoor = 6904 },
 	{ closedDoor = 7036, openDoor = 7037 },
 	{ closedDoor = 7045, openDoor = 7046 },
 	{ closedDoor = 7054, openDoor = 7055 },
@@ -145,10 +147,20 @@ customDoor = {
 	{ closedDoor = 36330, openDoor = 36332 },
 	{ closedDoor = 36498, openDoor = 36499 },
 	{ closedDoor = 36500, openDoor = 36501 },
+	{ closedDoor = 38106, openDoor = 38107 },
+	{ closedDoor = 38108, openDoor = 38109 },
+	--{ closedDoor = 38170}, -- it's probably door of a quest
+	--{ closedDoor = 38171}, -- it's probably door of a quest
+	--{ closedDoor = 38467}, -- it's probably door of a quest
+	--{ closedDoor = 38469}, -- it's probably door of a quest
+	{ closedDoor = 38468, openDoor = 38471 },
+	{ closedDoor = 38470, openDoor = 38472 },
+	{ closedDoor = 39056, openDoor = 39057 },
+	{ closedDoor = 39058, openDoor = 39059 },
 }
 
 -- These are the doors for missions, they need access from some mission (storage) to be able to enter. Put the storage value in the action id of the door and it will open only to the player who has the storage value.
-questDoor = {
+QuestDoorTable = {
 	{ closedDoor = 1223, openDoor = 1224 },
 	{ closedDoor = 1225, openDoor = 1226 },
 	{ closedDoor = 1241, openDoor = 1242 },
@@ -163,6 +175,7 @@ questDoor = {
 	{ closedDoor = 5132, openDoor = 5133 },
 	{ closedDoor = 5288, openDoor = 5289 },
 	{ closedDoor = 5290, openDoor = 5291 },
+	{ closedDoor = 5748, openDoor = 5749 },
 	{ closedDoor = 6202, openDoor = 6203 },
 	{ closedDoor = 6204, openDoor = 6205 },
 	{ closedDoor = 6259, openDoor = 6260 },
@@ -210,7 +223,7 @@ questDoor = {
 -- For example:
 -- Level 10 put the action id: 1010 on the door.
 -- Level 100 put the action id: 1100 on the door. And so on.
-levelDoor = {
+LevelDoorTable = {
 	{ closedDoor = 1227, openDoor = 1228 },
 	{ closedDoor = 1229, openDoor = 1230 },
 	{ closedDoor = 1245, openDoor = 1246 },

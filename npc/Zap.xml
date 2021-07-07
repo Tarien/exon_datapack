@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Zap" script="Zap.lua" walkinterval="2000" floorchange="0">
+<npc name="Zap" script="zap.lua" walkinterval="2000" floorchange="0">
 	<health now="100" max="100" />
 	<look type="39"/>
 	<parameters>
@@ -9,13 +9,13 @@
 
 			<!-- Rings -->
 			Energy Ring, 2167, 10000;
-			Sword Ring, 2207, 20000;
-			Axe Ring, 2208, 20000;
-			Club Ring, 2209, 20000;
-			Power Ring, 2166, 20000;
-			Time Ring, 2169, 20000;
-			Life Ring, 2168, 8000;
-			Ring of Healing, 2214, 20000;
+			Sword Ring, 2207, 10000;
+			Axe Ring, 2208, 10000;
+			Club Ring, 2209, 10000;
+			Power Ring, 2166, 10000;
+			Time Ring, 2169, 10000;
+			-- Life Ring, 2168, 8000;
+			-- Ring of Healing, 2214, 20000;
 			Stealth Ring, 2165, 10000;
 			Dwarven Ring, 2213, 10000;
 			

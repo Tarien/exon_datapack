@@ -17,19 +17,19 @@ end
 
 keywordHandler:addKeyword({'carrot'}, StdModule.say, {npcHandler = npcHandler, text = "What about 'no' do you not understand, hrm? You are more annoying than any {percht} around here! Not to mention those bothersome {bunnies} who try to graw away my nose!"})
 keywordHandler:addKeyword({'percht skull'}, StdModule.say, {npcHandler = npcHandler, text = "Well why didn't you say that rightaway, if you give me such a skull I can give you one of my {sleighs}."})
-keywordHandler:addKeyword({'percht'}, StdModule.say, {npcHandler = npcHandler, text = "Nasty creatures especially their queen that sits frozzen on her throne beneath this island."})
 keywordHandler:addKeyword({'bunnies'}, StdModule.say, {npcHandler = npcHandler, text = "Always trying to eat my nose!"})
 
 npcHandler:setMessage(MESSAGE_GREET, "No, you can't have my nose! If you're in need of a {carrot}, go to the market or just dig up one! Or did you come to bring me a {percht skull}?")
 
 
 sleighinfo = {
-['bright percht sleigh'] = {cost = 0, items = {{35051,1}}, mount = 133, storageID = 10101},
-['cold percht sleigh'] = {cost = 0, items = {{35051,1}}, mount = 132, storageID = 10102},
-['dark percht sleigh'] = {cost = 0, items = {{35051,1}}, mount = 134, storageID = 10103},
-
+['bright percht sleigh'] = {cost = 0, items = {{35051,1}}, mount = 133, storageID = Storage.Percht1},
+['cold percht sleigh'] = {cost = 0, items = {{35051,1}}, mount = 132, storageID = Storage.Percht2},
+['dark percht sleigh'] = {cost = 0, items = {{35051,1}}, mount = 134, storageID = Storage.Percht3},
 }
-local o = {'bright percht sleigh', 'cold percht sleigh', 'dark percht sleigh'}
+
+local monsterName = {'bright percht sleigh', 'cold percht sleigh', 'dark percht sleigh'}
+
 function creatureSayCallback(cid, type, msg)
 local talkUser = cid
 local player = Player(cid)
@@ -67,8 +67,10 @@ local player = Player(cid)
 			talkState[talkUser] = sleighinfo[msg].storageID
 			return true
 		end
+	elseif msg:lower() == 'percht' then
+		npcHandler:say('Nasty creatures especially their queen that sits frozzen on her throne beneath this island.', cid)
 	elseif msgcontains(msg, "yes") then
-		if (talkState[talkUser] > 10010 and talkState[talkUser] < 11100) then
+		if (talkState[talkUser] >= Storage.Percht1 and talkState[talkUser] <= Storage.Percht3) then
 			local items_number = 0
 			if table.maxn(sleighinfo[rtnt[talkUser]].items) > 0 then
 				for i = 1, table.maxn(sleighinfo[rtnt[talkUser]].items) do
@@ -97,7 +99,7 @@ local player = Player(cid)
 			return true
 		end
 	elseif msgcontains(msg, "mount") or msgcontains(msg, "mounts") or msgcontains(msg, "sleigh") or msgcontains(msg, "sleighs") then
-		npcHandler:say('I can give you one of the following sleighs: {' .. table.concat(o, "}, {") .. '}.', cid)
+		npcHandler:say('I can give you one of the following sleighs: {' .. table.concat(monsterName, "}, {") .. '}.', cid)
 		rtnt[talkUser] = nil
 		talkState[talkUser] = 0
 		npcHandler:resetNpc()

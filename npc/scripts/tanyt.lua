@@ -35,7 +35,6 @@ addTravelKeyword('kazordoon', 80, Position(32588, 31941, 0))
 addTravelKeyword('zao', 60, Position(32983, 31539, 1))
 addTravelKeyword('femor hills', 60, Position(32536, 31837, 4))
 addTravelKeyword('edron', 60, Position(33193, 31784, 3))
-addTravelKeyword('vanguard', 100, Position(33370, 32955, 4))
 
 -- Kick
 keywordHandler:addKeyword({'kick'}, StdModule.kick, {npcHandler = npcHandler, destination = {Position(33958, 31512, 1), Position(33959, 31512, 1)}})

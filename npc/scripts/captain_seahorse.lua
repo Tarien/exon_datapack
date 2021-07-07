@@ -2,19 +2,32 @@ local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
 
-function onCreatureAppear(cid)			npcHandler:onCreatureAppear(cid)			end
-function onCreatureDisappear(cid)		npcHandler:onCreatureDisappear(cid)			end
-function onCreatureSay(cid, type, msg)		npcHandler:onCreatureSay(cid, type, msg)		end
-function onThink()				npcHandler:onThink()					end
+function onCreatureAppear(cid)
+	npcHandler:onCreatureAppear(cid)
+end
+function onCreatureDisappear(cid)
+	npcHandler:onCreatureDisappear(cid)
+end
+function onCreatureSay(cid, type, msg)
+	npcHandler:onCreatureSay(cid, type, msg)
+end
+function onThink()
+	npcHandler:onThink()
+end
 
 -- Travel
 local function addTravelKeyword(keyword, cost, destination, action)
 	local travelKeyword = keywordHandler:addKeyword({keyword}, StdModule.say, {npcHandler = npcHandler, text = 'Do you seek a seek a passage to ' .. keyword:titleCase() .. ' for |TRAVELCOST|?', cost = cost, discount = 'postman'})
-		travelKeyword:addChildKeyword({'yes'}, StdModule.travel, {npcHandler = npcHandler, premium = false, cost = cost, discount = 'postman', destination = destination}, nil, action)
-		travelKeyword:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, text = 'We would like to serve you some time.', reset = true})
+	travelKeyword:addChildKeyword({'yes'}, StdModule.travel, {npcHandler = npcHandler, premium = false, cost = cost, discount = 'postman', destination = destination}, nil, action)
+	travelKeyword:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, text = 'We would like to serve you some time.', reset = true})
 end
 
-addTravelKeyword('venore', 40, Position(32954, 32022, 6), function(player) if player:getStorageValue(Storage.postman.Mission01) == 3 then player:setStorageValue(Storage.postman.Mission01, 4) end end)
+addTravelKeyword('venore', 40, Position(32954, 32022, 6),
+function(player)
+	if player:getStorageValue(Storage.Postman.Mission01) == 3 then
+		player:setStorageValue(Storage.Postman.Mission01, 4)
+	end
+end)
 addTravelKeyword('thais', 160, Position(32310, 32210, 6))
 addTravelKeyword('carlin', 110, Position(32387, 31820, 6))
 addTravelKeyword('krailos', 185, Position(33493, 31712, 6))
@@ -25,7 +38,6 @@ addTravelKeyword('liberty bay', 170, Position(32285, 32892, 6))
 addTravelKeyword('ankrahmun', 160, Position(33092, 32883, 6))
 addTravelKeyword('cormaya', 20, Position(33288, 31956, 6))
 addTravelKeyword('oramond', 200, Position(33479, 31985, 7))
-addTravelKeyword('vanguard', 120, Position(33371, 33002, 6))
 
 -- Kick
 keywordHandler:addKeyword({'kick'}, StdModule.kick, {npcHandler = npcHandler, destination = {Position(33174, 31773, 6), Position(33175, 31771, 6), Position(33177, 31772, 6)}})

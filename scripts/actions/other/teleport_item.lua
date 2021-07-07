@@ -4,8 +4,7 @@
 local teleportItem = Action()
 
 function teleportItem.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-
-	local setting = UniqueTable[item.uid]
+	local setting = TeleportItemUnique[item.uid]
 	if setting then
 		player:teleportTo(setting.destination)
 		player:getPosition():sendMagicEffect(setting.effect)
@@ -13,8 +12,8 @@ function teleportItem.onUse(player, item, fromPosition, target, toPosition, isHo
 	return true
 end
 
-for key = 17001, 18000 do
-	teleportItem:uid(key)
+for uniqueRange = 15001, 20000 do
+	teleportItem:uid(uniqueRange)
 end
 
 teleportItem:register()

@@ -1,5 +1,18 @@
 -- Functions from The Forgotten Server
 function Creature:onChangeOutfit(outfit)
+	if self:isPlayer() then
+		local familiarLookType = self:getFamiliarLooktype()
+		if familiarLookType ~= 0 then
+			for _, summon in pairs(self:getSummons()) do
+				if summon:getType():isPet() then
+						if summon:getOutfit().lookType ~= familiarLookType then
+							summon:setOutfit({lookType = familiarLookType})
+						end
+					break
+				end
+			end
+		end
+	end
 	return true
 end
 
@@ -15,21 +28,7 @@ function Creature:onHear(speaker, words, type)
 end
 
 -- Functions from OTServBR-Global
-function Creature:onChangeOutfit(outfit)
-	return true
-end
-
 function Creature:onAreaCombat(tile, isAggressive)
------- script for pet aoe damage
-	-- if self:getType():isPet() and isAgressive then
-		-- local tileCreatures = tile:getCreatures()
-		-- for k, creatures in pairs(tileCreatures) do
-			-- if creatures == self:getMaster() then
-				-- return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER
-			-- end
-		-- end
-	-- end
-----------
 	return true
 end
 
@@ -96,13 +95,10 @@ function Creature:onTargetCombat(target)
 		end
 	end
 
-	if ((target:isMonster() and self:isPlayer() and target:getType():isPet() and target:getMaster() == self)
-	or (self:isMonster() and target:isPlayer() and self:getType():isPet() and self:getMaster() == target)) then
+	if ((target:isMonster() and self:isPlayer() and target:getMaster() == self)
+	or (self:isMonster() and target:isPlayer() and self:getMaster() == target)) then
 		return RETURNVALUE_YOUMAYNOTATTACKTHISCREATURE
 	end
-	
-	
-	
 
 	if PARTY_PROTECTION ~= 0 then
 		if self:isPlayer() and target:isPlayer() then
@@ -111,18 +107,9 @@ function Creature:onTargetCombat(target)
 				local targetParty = target:getParty()
 				if targetParty and targetParty == party then
 					return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER
-					
 				end
 			end
 		end
-		
-		--------------------------------
-		-- Pet Party Protection
-		if (self:isMonster() and self:getType():isPet() and target:isPlayer() and (target:getParty() == self:getMaster():getParty())) then
-			return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER
-		end
-		--------------------------------- 
-		
 	end
 
 	if ADVANCED_SECURE_MODE ~= 0 then
@@ -134,24 +121,6 @@ function Creature:onTargetCombat(target)
 	end
 	return true
 end
-
-
-
---------------------------------------------
--- Fix aoe party damage
-	-- if PARTY_PROTECTION ~= 0 then
-		-- if self:getType():isPet() and target:isPlayer() then
-			-- local party = self:getMaster():getParty()
-			-- if party then
-				-- local targetParty = target:getParty()
-				-- if targetParty and targetParty == party then
-					-- return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER
-				-- end
-			-- end
-		-- end
-	-- end
-	-----------------------------------------
-	
 
 function Creature:onDrainHealth(attacker, typePrimary, damagePrimary,
 				typeSecondary, damageSecondary, colorPrimary, colorSecondary)
@@ -188,13 +157,3 @@ function Creature:onDrainHealth(attacker, typePrimary, damagePrimary,
 	end
 	return typePrimary, damagePrimary, typeSecondary, damageSecondary, colorPrimary, colorSecondary
 end
-
-
-
-
-
-
-
-
-
-

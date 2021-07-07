@@ -1,6 +1,6 @@
 -- Custom Modules, created to help us in this datapack
 local travelDiscounts = {
-	['postman'] = {price = 10, storage = Storage.postman.Rank, value = 3},
+	['postman'] = {price = 10, storage = Storage.Postman.Rank, value = 3},
 	['new frontier'] = {price = 50, storage = Storage.TheNewFrontier.Mission03, value = 1}
 }
 
@@ -97,11 +97,12 @@ function KeywordHandler:addSpellKeyword(keys, parameters)
 	local npcHandler, spellName, price, vocationId = parameters.npcHandler, parameters.spellName, parameters.price, parameters.vocation
 	local spellKeyword = self:addKeyword(keys, StdModule.say, {npcHandler = npcHandler, text = string.format("Do you want to learn the spell '%s' for %s?", spellName, price > 0 and price .. ' gold' or 'free')},
 		function(player)
-			local baseVocationId = player:getVocation():getBase():getId()
+			-- This will register for all client id vocations
+			local vocationClientId = player:getVocation():getClientId()
 			if type(vocationId) == 'table' then
-				return isInArray(vocationId, baseVocationId)
+				return table.contains(vocationId, vocationClientId)
 			else
-				return vocationId == baseVocationId
+				return vocationId == vocationClientId
 			end
 		end
 	)
@@ -226,7 +227,7 @@ function Player.removeMoneyNpc(self, amount)
 		-- Removes player inventory money
 		self:removeMoney(amount)
 
-		self:sendTextMessage(MESSAGE_INFO_DESCR, ("Paid %d from inventory."):format(amount))
+		self:sendTextMessage(MESSAGE_TRADE, ("Paid %d gold from inventory."):format(amount))
 		return true
 
 	-- The player doens't have all the money with him
@@ -241,12 +242,12 @@ function Player.removeMoneyNpc(self, amount)
 			-- Removes player bank money
 			self:setBankBalance(bankCount - remains)
 
-			self:sendTextMessage(MESSAGE_INFO_DESCR, ("Paid %d from inventory and %d gold from bank account. Your account balance is now %d gold."):format(moneyCount, amount - moneyCount, self:getBankBalance()))
+			self:sendTextMessage(MESSAGE_TRADE, ("Paid %d from inventory and %d gold from bank account. Your account balance is now %d gold."):format(moneyCount, amount - moneyCount, self:getBankBalance()))
 			return true
 
 		else
 			self:setBankBalance(bankCount - amount)
-			self:sendTextMessage(MESSAGE_INFO_DESCR, ("Paid %d gold from bank account. Your account balance is now %d gold."):format(amount, self:getBankBalance()))
+			self:sendTextMessage(MESSAGE_TRADE, ("Paid %d gold from bank account. Your account balance is now %d gold."):format(amount, self:getBankBalance()))
 			return true
 		end
 	end

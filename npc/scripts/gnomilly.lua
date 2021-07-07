@@ -66,7 +66,7 @@ function creatureSayCallback(cid, type, msg)
 				player:addFamePoint()
 				player:addExperience(1000, true)
 				player:setStorageValue(SPIKE_UPPER_PACIFIER_MAIN, -1)
-				player:setExhaustion(SPIKE_UPPER_PACIFIER_DAILY, 86400)
+				player:setStorageValue(SPIKE_UPPER_PACIFIER_DAILY, 86400)
 			else
 				npcHandler:say('Gnowful! Take the resonance charger and use it on seven of the pacifiers in the cave.', cid)
 			end
@@ -78,7 +78,7 @@ function creatureSayCallback(cid, type, msg)
 				player:addFamePoint()
 				player:addExperience(1000, true)
 				player:setStorageValue(SPIKE_UPPER_MOUND_MAIN, -1)
-				player:setExhaustion(SPIKE_UPPER_MOUND_DAILY, 86400)
+				player:setStorageValue(SPIKE_UPPER_MOUND_DAILY, 86400)
 			else
 				npcHandler:say('Gnowful! Take the spirit shovel use it on four graves in the cave system.', cid)
 			end
@@ -90,7 +90,7 @@ function creatureSayCallback(cid, type, msg)
 				player:addFamePoint()
 				player:addExperience(1000, true)
 				player:setStorageValue(SPIKE_UPPER_TRACK_MAIN, -1)
-				player:setExhaustion(SPIKE_UPPER_TRACK_DAILY, 86400)
+				player:setStorageValue(SPIKE_UPPER_TRACK_DAILY, 86400)
 			else
 				npcHandler:say('Gnowful! Take the tracking device in the caves and locate the residual spirit energy.', cid)
 			end
@@ -102,7 +102,7 @@ function creatureSayCallback(cid, type, msg)
 				player:addFamePoint()
 				player:addExperience(1000, true)
 				player:setStorageValue(SPIKE_UPPER_KILL_MAIN, -1)
-				player:setExhaustion(SPIKE_UPPER_KILL_DAILY, 86400)
+				player:setStorageValue(SPIKE_UPPER_KILL_DAILY, 86400)
 			else
 				npcHandler:say('Gnowful! Just go out to the caves and kill at least seven demon skeletons.', cid)
 			end
@@ -199,7 +199,7 @@ function creatureSayCallback(cid, type, msg)
 
 	if talkState[cid] == 'track' then
 		if msgcontains(msg, 'yes') then
-			GHOST_DETECTOR_MAP[player:getGuid()] = getFreeSand()
+			GHOST_DETECTOR_MAP[player:getGuid()] = Position.getFreeSand()
 			player:addItem(21555, 1)
 			player:setStorageValue(SPIKE_UPPER_TRACK_MAIN, 0)
 			npcHandler:say('Gnometastic! Use this tracking device in the caves and locate the residual spirit energy. If you lose the tracking device, you\'ll have to bring your own. Gnomux sells all the equipment that is required for our missions.', cid)

@@ -1,6 +1,21 @@
 TRUE = true
 FALSE = false
 
+MESSAGE_STATUS_CONSOLE_RED = MESSAGE_GAMEMASTER_CONSOLE
+
+MESSAGE_STATUS_DEFAULT = MESSAGE_LOGIN
+MESSAGE_STATUS_WARNING = MESSAGE_ADMINISTRADOR
+MESSAGE_EVENT_ADVANCE = MESSAGE_EVENT_ADVANCE
+
+MESSAGE_STATUS_SMALL = MESSAGE_FAILURE
+MESSAGE_INFO_DESCR = MESSAGE_LOOK
+MESSAGE_DAMAGE_DEALT = MESSAGE_DAMAGE_DEALT
+MESSAGE_DAMAGE_RECEIVED = MESSAGE_DAMAGE_RECEIVED
+MESSAGE_EVENT_DEFAULT = MESSAGE_STATUS
+
+MESSAGE_EVENT_ORANGE = TALKTYPE_MONSTER_SAY
+MESSAGE_STATUS_CONSOLE_ORANGE = TALKTYPE_MONSTER_YELL
+
 result.getDataInt = result.getNumber
 result.getDataLong = result.getNumber
 result.getDataString = result.getString
@@ -213,6 +228,10 @@ do
 			self:type("record")
 			self:onRecord(value)
 			return
+		elseif key == "onPeriodChange" then
+			self:type("periodchange")
+			self:onPeriodChange(value)
+			return
 		end
 		rawset(self, key, value)
 	end
@@ -302,12 +321,12 @@ setCombatFormula = Combat.setFormula
 setCombatParam = Combat.setParameter
 
 Combat.setCondition = function(...)
-	print("[Warning] Function Combat.setCondition was renamed to Combat.addCondition and will be removed in the future")
+	Spdlog.warn("[Combat.setCondition] - Function was renamed to Combat.addCondition and will be removed in the future")
 	Combat.addCondition(...)
 end
 
 setCombatCondition = function(...)
-	print("[Warning] Function setCombatCondition was renamed to addCombatCondition and will be removed in the future")
+	Spdlog.warn("[setCombatCondition] - Function was renamed to addCombatCondition and will be removed in the future")
 	Combat.addCondition(...)
 end
 
@@ -567,6 +586,7 @@ function setPlayerStorageValue(cid, key, value) local p = Player(cid) return p a
 function doPlayerSetBalance(cid, balance) local p = Player(cid) return p and p:setBankBalance(balance) or false end
 function doPlayerAddMoney(cid, money) local p = Player(cid) return p and p:addMoney(money) or false end
 function doPlayerRemoveMoney(cid, money) local p = Player(cid) return p and p:removeMoney(money) or false end
+function doPlayerTakeItem(cid, itemid, count) local p = Player(cid) return p and p:removeItem(itemid, count) or false end
 function doPlayerAddSoul(cid, soul) local p = Player(cid) return p and p:addSoul(soul) or false end
 function doPlayerSetVocation(cid, vocation) local p = Player(cid) return p and p:setVocation(Vocation(vocation)) or false end
 function doPlayerSetTown(cid, town) local p = Player(cid) return p and p:setTown(Town(town)) or false end
@@ -603,6 +623,7 @@ function doPlayerPopupFYI(cid, message) local p = Player(cid) return p and p:pop
 function doSendTutorial(cid, tutorialId) local p = Player(cid) return p and p:sendTutorial(tutorialId) or false end
 function doAddMapMark(cid, pos, type, description) local p = Player(cid) return p and p:addMapMark(pos, type, description or "") or false end
 function doPlayerSendTextMessage(cid, type, text, ...) local p = Player(cid) return p and p:sendTextMessage(type, text, ...) or false end
+function doPlayerSendChannelMessage(cid, author, message, SpeakClasses, channel) local p = Player(cid) return p and p:sendChannelMessage(author, message, SpeakClasses, channel) or false end
 function doSendAnimatedText() debugPrint("Deprecated function.") return true end
 function doPlayerAddExp(cid, exp, useMult, ...)
 	local player = Player(cid)
@@ -625,7 +646,7 @@ function doPlayerJoinParty(cid, leaderId)
 	end
 
 	if player:getParty() then
-		player:sendTextMessage(MESSAGE_INFO_DESCR, "You are already in a party.")
+		player:sendTextMessage(MESSAGE_PARTY_MANAGEMENT, "You are already in a party.")
 		return true
 	end
 
@@ -1199,7 +1220,7 @@ end
 
 function broadcastMessage(message, messageType)
 	Game.broadcastMessage(message, messageType)
-	print("> Broadcasted message: \"" .. message .. "\".")
+	Spdlog.info("Broadcasted message: \"" .. message .. "\"")
 end
 
 function Guild.addMember(self, player)
@@ -1306,6 +1327,19 @@ function createFunctions(class)
 	end
 end
 
-function doPlayerTakeItem(cid, itemid, count)
-	return Player(cid):removeItem(itemid, count)
+function doSetCreatureLight(cid, lightLevel, lightColor, time)
+	local creature = Creature(cid)
+	if not creature then
+		return false
+	end
+
+	local condition = Condition(CONDITION_LIGHT)
+	condition:setParameter(CONDITION_PARAM_LIGHT_LEVEL, lightLevel)
+	condition:setParameter(CONDITION_PARAM_LIGHT_COLOR, lightColor)
+	condition:setTicks(time)
+	creature:addCondition(condition)
+	return true
 end
+
+-- this is a fix for lua52 or higher which has the function renamed to table.unpack, while luajit still uses unpack
+if unpack == nil then unpack = table.unpack end

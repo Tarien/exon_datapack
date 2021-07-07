@@ -22,7 +22,7 @@ local function addTravelKeyword(keyword, cost, destination, action, condition)
 end
 
 
-addTravelKeyword('haven', 230, Position(33727, 33127, 6))
+addTravelKeyword('haven', 230, Position(30138, 33083, 6))
 
 -- Kick
 keywordHandler:addKeyword({'kick'}, StdModule.kick, {npcHandler = npcHandler, destination = {Position(32320, 32219, 6), Position(32321, 32210, 6)}})
@@ -37,13 +37,13 @@ keywordHandler:addKeyword({'company'}, StdModule.say, {npcHandler = npcHandler, 
 keywordHandler:addKeyword({'tibia'}, StdModule.say, {npcHandler = npcHandler, text = 'The East Vanguardian Trading Company Line connects all seaside towns of Tibia.'})
 keywordHandler:addKeyword({'good'}, StdModule.say, {npcHandler = npcHandler, text = 'We can transport everything you want.'})
 keywordHandler:addKeyword({'passenger'}, StdModule.say, {npcHandler = npcHandler, text = 'We would like to welcome you on board.'})
-keywordHandler:addKeyword({'trip'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Vanguard}?'})
-keywordHandler:addKeyword({'route'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Vanguard}?'})
-keywordHandler:addKeyword({'passage'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Vanguard}?'})
-keywordHandler:addKeyword({'town'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Vanguard}?'})
-keywordHandler:addKeyword({'destination'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Vanguard}?'})
-keywordHandler:addKeyword({'sail'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Vanguard}?'})
-keywordHandler:addKeyword({'go'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Vanguard}?'})
+keywordHandler:addKeyword({'trip'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Haven}?'})
+keywordHandler:addKeyword({'route'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Haven}?'})
+keywordHandler:addKeyword({'passage'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Haven}?'})
+keywordHandler:addKeyword({'town'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Haven}?'})
+keywordHandler:addKeyword({'destination'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Haven}?'})
+keywordHandler:addKeyword({'sail'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Haven}?'})
+keywordHandler:addKeyword({'go'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to go to {Haven}?'})
 keywordHandler:addKeyword({'ice'}, StdModule.say, {npcHandler = npcHandler, text = 'I\'m sorry, but we don\'t serve the routes to the Ice Islands.'})
 keywordHandler:addKeyword({'senja'}, StdModule.say, {npcHandler = npcHandler, text = 'I\'m sorry, but we don\'t serve the routes to the Ice Islands.'})
 keywordHandler:addKeyword({'folda'}, StdModule.say, {npcHandler = npcHandler, text = 'I\'m sorry, but we don\'t serve the routes to the Ice Islands.'})

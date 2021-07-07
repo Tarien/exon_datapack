@@ -38,7 +38,6 @@ addTravelKeyword('thais', 160, Position(32310, 32210, 6))
 addTravelKeyword('liberty bay', 50, Position(32285, 32892, 6))
 addTravelKeyword('carlin', 120, Position(32387, 31820, 6))
 addTravelKeyword('shortcut', 100, Position(32029, 32466, 7), function(player) return player:getStorageValue(Storage.TheSecretLibrary.PinkTel) == 2 and player:getStorageValue(Storage.TheSecretLibrary.Mota) == 12 end)
-addTravelKeyword('vanguard', 120, Position(33371, 33002, 6))
 
 -- Kick
 keywordHandler:addKeyword({'kick'}, StdModule.kick, {npcHandler = npcHandler, destination = {Position(32535, 32792, 6), Position(32536, 32778, 6)}})

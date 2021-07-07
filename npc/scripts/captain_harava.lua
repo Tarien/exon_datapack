@@ -2,10 +2,18 @@ local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
 
-function onCreatureAppear(cid)			npcHandler:onCreatureAppear(cid)			end
-function onCreatureDisappear(cid)		npcHandler:onCreatureDisappear(cid)			end
-function onCreatureSay(cid, type, msg)		npcHandler:onCreatureSay(cid, type, msg)		end
-function onThink()		npcHandler:onThink()		end
+function onCreatureAppear(cid)
+	npcHandler:onCreatureAppear(cid)
+end
+function onCreatureDisappear(cid)
+	npcHandler:onCreatureDisappear(cid)
+end
+function onCreatureSay(cid, type, msg)
+	npcHandler:onCreatureSay(cid, type, msg)
+end
+function onThink()
+	npcHandler:onThink()
+end
 
 local voices = { {text = 'Come on board! The winds are prosperous!'} }
 npcHandler:addModule(VoiceModule:new(voices))
@@ -21,11 +29,10 @@ local function addTravelKeyword(keyword, cost, destination, action, condition)
 		travelKeyword:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, text = 'We would like to serve you some time.', reset = true})
 end
 
-addTravelKeyword('darashia', 80, Position(33270, 32441, 6))
+addTravelKeyword('darashia', 80, Position(33289, 32481, 6))
 addTravelKeyword('venore', 80, Position(32954, 32022, 6))
 addTravelKeyword('oramond', 100, Position(33479, 31985, 7))
 addTravelKeyword('krailos', 80, Position(33492, 31712, 6))
-addTravelKeyword('vanguard', 120, Position(33371, 33002, 6))
 
 -- Kick
 keywordHandler:addKeyword({'kick'}, StdModule.kick, {npcHandler = npcHandler, destination = {Position(33897, 31471, 6), Position(33901, 31471, 6)}})

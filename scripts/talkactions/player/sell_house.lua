@@ -12,19 +12,12 @@ function sellHouse.onSay(player, words, param)
 		player:sendCancelMessage("You must stand in your house to initiate the trade.")
 		return false
 	end
-	
-	if checkAccHouses(tradePartner) then
-		player:sendCancelMessage("The buyer already owns a house with his account.")
-		return false
-	end
-	
+
 	local returnValue = house:startTrade(player, tradePartner)
 	if returnValue ~= RETURNVALUE_NOERROR then
 		player:sendCancelMessage(returnValue)
 	end
 	return false
-	
-	
 end
 
 sellHouse:separator(" ")

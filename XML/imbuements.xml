@@ -212,18 +212,18 @@
 		<attribute key="item" value="10611" count="20" />
 		<attribute key="item" value="12658" count="10" />
 	</imbuement>
-	<imbuement name="Hide Dragon" base="1" category="6" iconid="34">
+	<imbuement name="Dragon Hide" base="1" category="6" iconid="34">
 		<attribute key="description" value="Reduces fire damage by 3%." />
 		<attribute key="effect" type="reduction" combat="fire" value="3" />
 		<attribute key="item" value="5877" count="20" />
 	</imbuement>
-	<imbuement name="Hide Dragon" base="2" category="6" iconid="34">
+	<imbuement name="Dragon Hide" base="2" category="6" iconid="34">
 		<attribute key="description" value="Reduces fire damage by 8%." />
 		<attribute key="effect" type="reduction" combat="fire" value="8" />
 		<attribute key="item" value="5877" count="20" />
 		<attribute key="item" value="18425" count="10" />
 	</imbuement>
-	<imbuement name="Hide Dragon" base="3" category="6" iconid="34">
+	<imbuement name="Dragon Hide" base="3" category="6" iconid="34">
 		<attribute key="description" value="Reduces fire damage by 15%." />
 		<attribute key="effect" type="reduction" combat="fire" value="15" />
 		<attribute key="item" value="5877" count="20" />
@@ -414,19 +414,19 @@
 	</imbuement>
 	<!-- Capacity Imbuement -->
 	<imbuement name="Featherweight" base="1" category="17" iconid="64">
-		<attribute key="description" value="Raises capacity by 300." />
-		<attribute key="effect" type="capacity" value="300" />
+		<attribute key="description" value="Raises capacity by 3." />
+		<attribute key="effect" type="capacity" value="3" />
 		<attribute key="item" value="28999" count="20" />
 	</imbuement>
 	<imbuement name="Featherweight" base="2" category="17" iconid="64">
-		<attribute key="description" value="Raises capacity by 800." />
-		<attribute key="effect" type="capacity" value="800" />
+		<attribute key="description" value="Raises capacity by 8." />
+		<attribute key="effect" type="capacity" value="8" />
 		<attribute key="item" value="28999" count="20" />
 		<attribute key="item" value="29007" count="10" />
 	</imbuement>
 	<imbuement name="Featherweight" base="3" category="17" iconid="64">
-		<attribute key="description" value="Raises capacity by 1500." />
-		<attribute key="effect" type="capacity" value="1500" />
+		<attribute key="description" value="Raises capacity by 15." />
+		<attribute key="effect" type="capacity" value="15" />
 		<attribute key="item" value="28999" count="20" />
 		<attribute key="item" value="29007" count="10" />
 		<attribute key="item" value="22539" count="5" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Nab" script="bank_post.lua" walkinterval="2000" floorchange="0">
+<npc name="Nab" script="bank.lua" walkinterval="2000" floorchange="0">
 	<health now="100" max="100" />
 	<look type="472" head="142" body="113" legs="142" feet="113" addons="2" />
 	<parameters>

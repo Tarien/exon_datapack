@@ -48,8 +48,8 @@ function CitizenFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 128, 1) 
-            doPlayerAddOutfit(cid, 136, 1) 
+            doPlayerAddOutfit(cid, 128, 2) 
+            doPlayerAddOutfit(cid, 136, 2) 
             setPlayerStorageValue(cid,citizen,1) 
         end 
         else 
@@ -76,8 +76,8 @@ function CitizenSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 128, 2) 
-            doPlayerAddOutfit(cid, 136, 2) 
+            doPlayerAddOutfit(cid, 128, 1) 
+            doPlayerAddOutfit(cid, 136, 1) 
             setPlayerStorageValue(cid,citizen+1,1) 
         end 
         else 
@@ -106,8 +106,8 @@ function HunterFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 129, 1)
-doPlayerAddOutfit(cid, 137, 1)			
+            doPlayerAddOutfit(cid, 129, 2)
+			doPlayerAddOutfit(cid, 137, 2)			
             setPlayerStorageValue(cid,hunter,1) 
         end 
         else 
@@ -134,8 +134,8 @@ function HunterSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 129, 2) 
-			doPlayerAddOutfit(cid, 137, 2)
+            doPlayerAddOutfit(cid, 129, 1) 
+			doPlayerAddOutfit(cid, 137, 1)
             setPlayerStorageValue(cid,hunter+1,1) 
         end 
         else 
@@ -165,8 +165,8 @@ function MageFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
                   
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 138, 1) 
-            doPlayerAddOutfit(cid, 130, 1) 
+            doPlayerAddOutfit(cid, 138, 2) 
+            doPlayerAddOutfit(cid, 130, 2) 
             setPlayerStorageValue(cid,mage,1) 
         end 
         else 
@@ -178,8 +178,8 @@ function MageFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 130, 1) 
-            doPlayerAddOutfit(cid, 138, 1) 
+            doPlayerAddOutfit(cid, 130, 2) 
+            doPlayerAddOutfit(cid, 138, 2) 
             setPlayerStorageValue(cid,mage,1) 
         end 
         else 
@@ -208,8 +208,8 @@ function MageSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 138, 2) 
-            doPlayerAddOutfit(cid, 130, 2) 
+            doPlayerAddOutfit(cid, 138, 1) 
+            doPlayerAddOutfit(cid, 130, 1) 
             setPlayerStorageValue(cid,mage+1,1) 
         end 
         else 
@@ -221,8 +221,8 @@ function MageSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 130, 2) 
-            doPlayerAddOutfit(cid, 138, 2) 
+            doPlayerAddOutfit(cid, 130, 1) 
+            doPlayerAddOutfit(cid, 138, 1) 
             setPlayerStorageValue(cid,mage+1,1) 
         end 
         else 
@@ -252,8 +252,8 @@ function KnightFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 131, 1) 
-            doPlayerAddOutfit(cid, 139, 1) 
+            doPlayerAddOutfit(cid, 131, 2) 
+            doPlayerAddOutfit(cid, 139, 2) 
             setPlayerStorageValue(cid,knight,1) 
         end 
         else 
@@ -280,8 +280,8 @@ function KnightSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 131, 2) 
-            doPlayerAddOutfit(cid, 139, 2) 
+            doPlayerAddOutfit(cid, 131, 1) 
+            doPlayerAddOutfit(cid, 139, 1) 
             setPlayerStorageValue(cid,knight+1,1) 
         end 
         else 
@@ -315,8 +315,8 @@ function NoblemanFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 132, 1) 
-            doPlayerAddOutfit(cid, 140, 1) 
+            doPlayerAddOutfit(cid, 132, 2) 
+            doPlayerAddOutfit(cid, 140, 2) 
             setPlayerStorageValue(cid,nobleman,1) 
         end 
         else 
@@ -348,8 +348,8 @@ function NoblemanSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 132, 2) 
-            doPlayerAddOutfit(cid, 140, 2) 
+            doPlayerAddOutfit(cid, 132, 1) 
+            doPlayerAddOutfit(cid, 140, 1) 
             setPlayerStorageValue(cid,nobleman+1,1) 
         end 
         else 
@@ -379,8 +379,8 @@ function SummonerFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 133, 1) 
-            doPlayerAddOutfit(cid, 141, 1) 
+            doPlayerAddOutfit(cid, 133, 2) 
+            doPlayerAddOutfit(cid, 141, 2) 
             setPlayerStorageValue(cid,summoner,1) 
         end 
         else 
@@ -392,8 +392,8 @@ function SummonerFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 133, 1) 
-            doPlayerAddOutfit(cid, 141, 1) 
+            doPlayerAddOutfit(cid, 133, 2) 
+            doPlayerAddOutfit(cid, 141, 2) 
             setPlayerStorageValue(cid,summoner,1) 
         end 
         else 
@@ -422,8 +422,8 @@ function SummonerSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 133, 2) 
-            doPlayerAddOutfit(cid, 141, 2) 
+            doPlayerAddOutfit(cid, 133, 1) 
+            doPlayerAddOutfit(cid, 141, 1) 
             setPlayerStorageValue(cid,summoner+1,1) 
         end 
         else 
@@ -435,8 +435,8 @@ function SummonerSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 133, 2) 
-            doPlayerAddOutfit(cid, 141, 2) 
+            doPlayerAddOutfit(cid, 133, 1) 
+            doPlayerAddOutfit(cid, 141, 1) 
             setPlayerStorageValue(cid,summoner+1,1) 
         end 
         else 
@@ -466,8 +466,8 @@ function WarriorFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 134, 1) 
-            doPlayerAddOutfit(cid, 142, 1) 
+            doPlayerAddOutfit(cid, 134, 2) 
+            doPlayerAddOutfit(cid, 142, 2) 
             setPlayerStorageValue(cid,warrior,1) 
         end 
         else 
@@ -494,8 +494,8 @@ function WarriorSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 134, 2) 
-            doPlayerAddOutfit(cid, 142, 2) 
+            doPlayerAddOutfit(cid, 134, 1) 
+            doPlayerAddOutfit(cid, 142, 1) 
             setPlayerStorageValue(cid,warrior+1,1) 
         end 
         else 
@@ -524,8 +524,8 @@ function BarbarianFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 143, 1) 
-            doPlayerAddOutfit(cid, 147, 1) 
+            doPlayerAddOutfit(cid, 143, 2) 
+            doPlayerAddOutfit(cid, 147, 2) 
             setPlayerStorageValue(cid,barbarian,1) 
         end 
         else 
@@ -552,8 +552,8 @@ function BarbarianSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 143, 2) 
-            doPlayerAddOutfit(cid, 147, 2) 
+            doPlayerAddOutfit(cid, 143, 1) 
+            doPlayerAddOutfit(cid, 147, 1) 
             setPlayerStorageValue(cid,barbarian+1,1) 
         end 
         else 
@@ -582,8 +582,8 @@ function DruidFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 144, 1) 
-            doPlayerAddOutfit(cid, 148, 1) 
+            doPlayerAddOutfit(cid, 144, 2) 
+            doPlayerAddOutfit(cid, 148, 2) 
             setPlayerStorageValue(cid,druid,1) 
         end 
         else 
@@ -610,8 +610,8 @@ function DruidSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 144, 2) 
-            doPlayerAddOutfit(cid, 148, 2) 
+            doPlayerAddOutfit(cid, 144, 1) 
+            doPlayerAddOutfit(cid, 148, 1) 
             setPlayerStorageValue(cid,druid+1,1) 
         end 
         else 
@@ -639,8 +639,8 @@ function WizardFirst(cid, message, keywords, parameters, node)
         if doPlayerRemoveItem(cid,2488,1) and doPlayerRemoveItem(cid,2123,1) and doPlayerRemoveItem(cid,2492,1) and doPlayerRemoveItem(cid,2536,1) then 
             selfSay(newaddon, cid) 
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 145, 1) 
-            doPlayerAddOutfit(cid, 149, 1) 
+            doPlayerAddOutfit(cid, 145, 2) 
+            doPlayerAddOutfit(cid, 149, 2) 
             setPlayerStorageValue(cid,wizard,1) 
         end 
         else 
@@ -667,8 +667,8 @@ function WizardSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 145, 2) 
-            doPlayerAddOutfit(cid, 149, 2) 
+            doPlayerAddOutfit(cid, 145, 1) 
+            doPlayerAddOutfit(cid, 149, 1) 
             setPlayerStorageValue(cid,wizard+1,1) 
         end 
         else 
@@ -697,8 +697,8 @@ function OrientalFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 146, 1) 
-            doPlayerAddOutfit(cid, 150, 1) 
+            doPlayerAddOutfit(cid, 146, 2) 
+            doPlayerAddOutfit(cid, 150, 2) 
             setPlayerStorageValue(cid,oriental,1) 
         end 
         else 
@@ -725,8 +725,8 @@ function OrientalSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 146, 2) 
-            doPlayerAddOutfit(cid, 150, 2) 
+            doPlayerAddOutfit(cid, 146, 1) 
+            doPlayerAddOutfit(cid, 150, 1) 
             setPlayerStorageValue(cid,oriental+1,1) 
         end 
         else 
@@ -755,8 +755,8 @@ function PirateFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 151, 1) 
-            doPlayerAddOutfit(cid, 155, 1) 
+            doPlayerAddOutfit(cid, 151, 2) 
+            doPlayerAddOutfit(cid, 155, 2) 
             setPlayerStorageValue(cid,pirate,1) 
         end 
         else 
@@ -783,8 +783,8 @@ function PirateSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 151, 2) 
-            doPlayerAddOutfit(cid, 155, 2) 
+            doPlayerAddOutfit(cid, 151, 1) 
+            doPlayerAddOutfit(cid, 155, 1) 
             setPlayerStorageValue(cid,pirate+1,1) 
         end 
         else 
@@ -813,8 +813,8 @@ function AssassinFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 152, 1) 
-            doPlayerAddOutfit(cid, 156, 1) 
+            doPlayerAddOutfit(cid, 152, 2) 
+            doPlayerAddOutfit(cid, 156, 2) 
             setPlayerStorageValue(cid,assassin,1) 
         end 
         else 
@@ -841,8 +841,8 @@ function AssassinSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 152, 2) 
-            doPlayerAddOutfit(cid, 156, 2) 
+            doPlayerAddOutfit(cid, 152, 1) 
+            doPlayerAddOutfit(cid, 156, 1) 
             setPlayerStorageValue(cid,assassin+1,1) 
         end 
         else 
@@ -876,8 +876,8 @@ function BeggarFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 153, 1) 
-            doPlayerAddOutfit(cid, 157, 1) 
+            doPlayerAddOutfit(cid, 153, 2) 
+            doPlayerAddOutfit(cid, 157, 2) 
             setPlayerStorageValue(cid,beggar,1) 
         end 
         else 
@@ -904,8 +904,8 @@ function BeggarSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 153, 2) 
-            doPlayerAddOutfit(cid, 157, 2) 
+            doPlayerAddOutfit(cid, 153, 1) 
+            doPlayerAddOutfit(cid, 157, 1) 
             setPlayerStorageValue(cid,beggar+1,1) 
         end 
         else 
@@ -934,8 +934,8 @@ function ShamanSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 154, 2) 
-            doPlayerAddOutfit(cid, 158, 2) 
+            doPlayerAddOutfit(cid, 154, 1) 
+            doPlayerAddOutfit(cid, 158, 1) 
             setPlayerStorageValue(cid,shaman,1) 
         end 
         else 
@@ -962,8 +962,8 @@ function ShamanFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 154, 1) 
-            doPlayerAddOutfit(cid, 158, 1) 
+            doPlayerAddOutfit(cid, 154, 2) 
+            doPlayerAddOutfit(cid, 158, 2) 
             setPlayerStorageValue(cid,shaman+1,1) 
         end 
         else 
@@ -992,8 +992,8 @@ function NorsemanFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 251, 1) 
-            doPlayerAddOutfit(cid, 252, 1) 
+            doPlayerAddOutfit(cid, 251, 2) 
+            doPlayerAddOutfit(cid, 252, 2) 
             setPlayerStorageValue(cid,norseman,1) 
         end 
         else 
@@ -1020,8 +1020,8 @@ function NorsemanSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 251, 2) 
-            doPlayerAddOutfit(cid, 252, 2) 
+            doPlayerAddOutfit(cid, 251, 1) 
+            doPlayerAddOutfit(cid, 252, 1) 
             setPlayerStorageValue(cid,norseman+1,1) 
         end 
         else 
@@ -1050,8 +1050,8 @@ function NightmareFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 268, 1) 
-            doPlayerAddOutfit(cid, 269, 1) 
+            doPlayerAddOutfit(cid, 268, 2) 
+            doPlayerAddOutfit(cid, 269, 2) 
             setPlayerStorageValue(cid,nightmare,1) 
         end 
         else 
@@ -1078,8 +1078,8 @@ function NightmareSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 268, 2) 
-            doPlayerAddOutfit(cid, 269, 2) 
+            doPlayerAddOutfit(cid, 268, 1) 
+            doPlayerAddOutfit(cid, 269, 1) 
             setPlayerStorageValue(cid,nightmare+1,1) 
         end 
         else 
@@ -1108,8 +1108,8 @@ function JesterFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 273, 1) 
-            doPlayerAddOutfit(cid, 270, 1) 
+            doPlayerAddOutfit(cid, 273, 2) 
+            doPlayerAddOutfit(cid, 270, 2) 
             setPlayerStorageValue(cid,jester,1) 
         end 
         else 
@@ -1136,8 +1136,8 @@ function JesterSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 273, 2) 
-            doPlayerAddOutfit(cid, 270, 2) 
+            doPlayerAddOutfit(cid, 273, 1) 
+            doPlayerAddOutfit(cid, 270, 1) 
             setPlayerStorageValue(cid,jester+1,1) 
         end 
         else 
@@ -1166,8 +1166,8 @@ function BrotherhoodFirst(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 278, 1) 
-            doPlayerAddOutfit(cid, 279, 1) 
+            doPlayerAddOutfit(cid, 278, 2) 
+            doPlayerAddOutfit(cid, 279, 2) 
             setPlayerStorageValue(cid,brotherhood,1) 
         end 
         else 
@@ -1194,8 +1194,8 @@ function BrotherhoodSecond(cid, message, keywords, parameters, node)
             selfSay(newaddon, cid) 
               
             doSendMagicEffect(getCreaturePosition(cid), 13) 
-            doPlayerAddOutfit(cid, 278, 2) 
-            doPlayerAddOutfit(cid, 279, 2) 
+            doPlayerAddOutfit(cid, 278, 1) 
+            doPlayerAddOutfit(cid, 279, 1) 
             setPlayerStorageValue(cid,brotherhood+1,1) 
         end 
         else 
@@ -1211,7 +1211,7 @@ end
 
 
 keywordHandler:addKeyword({'addons'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = "I can offer you first & second addons of the following outfits: Citizen, Hunter, Mage, Knight, Nobleman, Summoner, Warrior, Barbarian, Druid, Wizard, Oriental, Pirate, Assassin, Beggar, Shaman, Norseman, Nightmare, Jester and Brotherhood."}) 
-keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = "What you do is that you type 'first hunter addon' or 'second hunter addon' where you replace 'hunter' with whatever outfit you'd like to achieve the addons for. Assuming that you already collected all the required pieces, say 'yes' and voÃ­la - you got yourself an addon!"}) 
+keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = "What you do is that you type 'first hunter addon' or 'second hunter addon' where you replace 'hunter' with whatever outfit you'd like to achieve the addons for. Assuming that you already collected all the required pieces, say 'yes' and voíla - you got yourself an addon!"}) 
 
  node1 = keywordHandler:addKeyword({'first citizen addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first citizen addon you need to give me 100 minotaur leathers. Do you have them with you?'}) 
     node1:addChildKeyword({'yes'}, CitizenFirst, {}) 

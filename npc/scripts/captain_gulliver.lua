@@ -2,10 +2,18 @@ local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
 
-function onCreatureAppear(cid)			npcHandler:onCreatureAppear(cid)			end
-function onCreatureDisappear(cid)		npcHandler:onCreatureDisappear(cid)			end
-function onCreatureSay(cid, type, msg)		npcHandler:onCreatureSay(cid, type, msg)		end
-function onThink()		npcHandler:onThink()		end
+function onCreatureAppear(cid)
+	npcHandler:onCreatureAppear(cid)
+end
+function onCreatureDisappear(cid)
+	npcHandler:onCreatureDisappear(cid)
+end
+function onCreatureSay(cid, type, msg)
+	npcHandler:onCreatureSay(cid, type, msg)
+end
+function onThink()
+	npcHandler:onThink()
+end
 
 local voices = { {text = 'Passages to Thais and Krailos! Visit the strange lands!'} }
 npcHandler:addModule(VoiceModule:new(voices))
@@ -20,7 +28,7 @@ end
 addTravelKeyword('thais', 150, Position(32311, 32210, 6))
 addTravelKeyword('krailos', 180, Position(33493, 31712, 6))
 addTravelKeyword('travora', 1000, Position(32055, 32368, 6))
-addTravelKeyword('issavi', 130, Position(33957, 31515, 0))
+addTravelKeyword('issavi', 130, Position(33902, 31462, 6))
 
 -- Kick
 keywordHandler:addKeyword({'kick'}, StdModule.kick, {npcHandler = npcHandler, destination = {Position(33487, 31986, 7), Position(33486, 31984, 7)}})

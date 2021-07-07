@@ -8,8 +8,8 @@ local config = {
         winNum = (100) + 500, -- 600% numbers
     },
 
-    playerPosition = Position(33387, 32951, 6), -- player must stay on this position to talk with npc
-    dicerCounter = Position(33386, 32950, 6), -- counter position
+    playerPosition = Position(29798, 32908, 6), -- player must stay on this position to talk with npc
+    dicerCounter = Position(29797, 32907, 6), -- counter position
 }
 
 local keywordHandler = KeywordHandler:new()

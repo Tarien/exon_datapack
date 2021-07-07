@@ -35,7 +35,6 @@ addTravelKeyword('gray island', 160, Position(33196, 31984, 7))
 addTravelKeyword('krailos', 200, Position(33493, 31712, 6))
 addTravelKeyword('travora', 1000, Position(32055, 32368, 6))
 addTravelKeyword('issavi', 130, Position(33902, 31462, 6))
-addTravelKeyword('vanguard', 120, Position(33371, 33002, 6))
 
 -- Kick
 keywordHandler:addKeyword({'kick'}, StdModule.kick, {npcHandler = npcHandler, destination = {Position(33288, 32474, 6), Position(33291, 32474, 6), Position(33293, 32471, 6)}})
